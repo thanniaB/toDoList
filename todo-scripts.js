@@ -37,10 +37,8 @@
         	inputText = textBox.val(); //pa saber que esta escrito en el textbox
     		if(e.which == 13) {//tecla enter
     			//anadir tarea  
-    			textBox.after("<div class='task'><input type='checkbox' class='checkbox' /> "+ inputText + "<input type='submit' class='eraseButton' value='X' /></div>");
-    			textBox.val("");
-
-						
+    			textBox.after("<div class='task'><input type='checkbox' class='checkbox' /> <input type='text' class='taskText' value = "+ inputText + " readonly='readonly' /><input type='submit' class='eraseButton' value='X' /></div>");
+    			textBox.val("");						
     			check();		
     		}
 		});
@@ -49,9 +47,9 @@
 			function(){
 				//modify div properties AND erase one from the count thingy
 				if($(this).prop("checked")){
-					$(this).parent().css("text-decoration", "line-through" );
+					$(this).siblings(".taskText").css("text-decoration", "line-through" );
 				} else {
-					$(this).parent().css("text-decoration", "none" );
+					$(this).siblings(".taskText").css("text-decoration", "none" );
 				}
 				check();
 			}
@@ -62,6 +60,19 @@
 				check();
 			}
 		);
+
+		$("main").on("dblclick", ".taskText",
+			function(){
+				 $(this).prop('readonly', false);
+				 $(this).keypress(function(e) {
+				 	if(e.which == 13) {
+				 		$(this).prop('readonly', true);
+				 	}
+				 });
+			}
+		);
+
+
 
     }
     $(window).load(setup);	

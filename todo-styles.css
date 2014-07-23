@@ -37,6 +37,12 @@ body{
 	color: white;
 	background-image: url("images/pool_table.png");
 }
+.taskText{
+	color: white;
+	font-size: 1em;
+	background: none;
+	border: none;
+}
 
 .eraseButton{
 	width: 25px;
