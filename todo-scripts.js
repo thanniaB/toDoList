@@ -37,7 +37,9 @@
         	inputText = textBox.val(); //pa saber que esta escrito en el textbox
     		if(e.which == 13) {//tecla enter
     			//anadir tarea  
-    			textBox.after("<div class='task'><input type='checkbox' class='checkbox' /> "+ inputText + "<input type='submit' class='eraseButton' value='X' /></div>");    			
+    			textBox.after("<div class='task'><input type='checkbox' class='checkbox' /> "+ inputText + "<input type='submit' class='eraseButton' value='X' /></div>");
+    			textBox.val("");
+
 						
     			check();		
     		}
